@@ -1,6 +1,6 @@
 #ifndef _ROBOTCONTROLLER_H_
 #define _ROBOTCONTROLLER_H_
-#include "robot.h";
+#include "robot.h"
 #include "vector"
 #include <string>
 
