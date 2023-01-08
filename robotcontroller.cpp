@@ -8,6 +8,12 @@ using namespace std;
 void clearScreen();
 int diceRoll(int &diceRolls);
 
+/*
+clears each robot, number of players, and each roll count then 
+prompts for the number of players and creates each robot
+for each player.
+*/
+
 void controller::initializeGame(int numPlayers){
   rob_.clear();
   rolls_.clear();
@@ -20,6 +26,12 @@ void controller::initializeGame(int numPlayers){
     rolls_.push_back(0);
   }
 }
+
+/*
+checks if last player won and breaks out of game and shows victory if they did
+if they didn't uses switch to determine rolls of each player and if an item should
+be added and pauses after each roll
+*/
 
 void controller::playGame(){
   for(int i = 0; !rob_[(i+numPlay_-1)%numPlay_].complete(); i = (i+1)%numPlay_) {
@@ -83,6 +95,8 @@ void controller::playGame(){
   }
 }
 
+//adds distance from last prompt 
+
 void clearScreen() {
   cout << endl << endl << endl << endl << endl;
   cout << endl << endl << endl << endl << endl;
@@ -95,6 +109,8 @@ void clearScreen() {
   cout << endl << endl << endl << endl << endl;
   cout << endl << endl << endl << endl << endl;
 }
+
+//rolls a die for what part to add
 
 int diceRoll(int &diceRolls) {
   int roll = rand() % 7 + 1;
