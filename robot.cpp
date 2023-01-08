@@ -2,10 +2,24 @@
 #include "robot.h"
 using namespace std;
 
+//initializes values of each part to 0
 robot::robot(){
   for(int i=0; i<7; i++)
     robot_[i] = 0;
 }
+
+/*
+All bool values return a bool if value of true if the part can be added
+based on the requirements below
+
+Wheel: less than 3 wheels
+Axle: axles less than wheels
+Torso: less than one torso and at least 3 axle
+Plunger: less than one plunger and exactly one torso
+Head: less than one head and exactly one torso
+Antenna: less than two antenne and exactly one head
+Power Cells: less than four power cells and exactly one torso
+*/
 
 bool robot::addWheel(){
   if (robot_[0]==3){
@@ -77,7 +91,7 @@ bool robot::addPowerCells(){
   }
 }
 
-//count start
+//Count amount of each part.
 
 int robot::countWheel(){
   return robot_[0];
@@ -109,11 +123,15 @@ int robot::countPowerCells(){
 
 //count end
 
+//check if robot complete
+
 bool robot::complete(){
   if (robot_[3]==1 && robot_[6]==4 && robot_[5]==2)
     return true;
   return false;
 }
+
+//print amount of each part
 
 void robot::print(){
   std::cout << "Wheels:" << robot_[0]
@@ -122,9 +140,13 @@ void robot::print(){
 << " Antenna:" << robot_[5] << " Power Cells:" << robot_[6];
 }
 
+//name robot
+
 void robot::setName(std::string name){
   name_ = name;
 }
+
+//gets robots name from class
 
 std::string robot::getName(){
   return name_;
